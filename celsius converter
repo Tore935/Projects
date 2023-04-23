@@ -1,0 +1,32 @@
+#include <iostream>
+#include <fstream> //allows input and output of files
+#include <string>
+#include <cmath>
+using namespace std;
+// declaring the variables to pulled from input file
+int main() {
+	string city;
+	int fahrenheit, celsius;
+	// opening input file
+	ifstream inFile;
+	inFile.open("C:\\Users\\nikko\\Documents\\FahrenheitTemperature.txt");
+	//opening output file
+	ofstream outFile;
+	outFile.open("C:\\Users\\nikko\\Documents\\CelsiusTemperature.txt");
+	//setting up the conversion algorithm
+	if (!inFile) {
+		cout << "Unable to open file." << '\n';
+	}
+	else {
+		while (inFile >> city >> fahrenheit) {
+			celsius = (int)(((fahrenheit - 32) * 5) / (double)9);
+			outFile << city << " " << celsius << '\n';
+		}
+	}
+	//closing both files
+	inFile.close();
+	outFile.close();
+
+	return 0;
+
+}
